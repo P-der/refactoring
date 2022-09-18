@@ -1,7 +1,8 @@
 function statement (invoices, plays) {
-    return renderPlainText(invoices, plays)
+    const statementData = {}
+    return renderPlainText(statementData, invoices, plays)
 }
-function renderPlainText (invoices, plays) {
+function renderPlainText (data, invoices, plays) {
     let result = `Statement for ${invoices.customer}\n`
 
     for(let perf of invoices.performances) {
