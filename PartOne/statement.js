@@ -5,7 +5,7 @@ function statement (invoices, plays) {
     const format = new Intl.NumberFormat("en-US", {style: 'currency', currency:"USD", minimumFractionDigits: 2}).format
     for(let perf of invoices.performances) {
         
-        let thisAmount = amountFor(perf, playFor(perf))
+        let thisAmount = amountFor(perf)
 
         // add volume credits
         volumeCredits += Math.max(perf.audience - 30, 0)
@@ -19,10 +19,10 @@ function statement (invoices, plays) {
     result += `Amount owed is ${format(totalAmount/100)}\n`
     result += `You earned ${volumeCredits} credits\n`
     return result
-    function amountFor(aPerformance, play) {
+    function amountFor(aPerformance) {
         let result = 0
         
-        switch(play.type) {
+        switch(playFor(aPerformance).type) {
             case "tragedy": 
                 result = 40000
                 if(aPerformance.audience > 30) {
