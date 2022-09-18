@@ -6,12 +6,15 @@ export default function createStatementData (invoices, plays) {
     statementData.totalVolumeCredits = totalVolumeCredits(statementData)
     return statementData
     function enrichPerformance(aPerformance) {
-        const calculator = new PerformanceCalculator(aPerformance, playFor(aPerformance))
+        const calculator = createPerformanceCalculator(aPerformance, playFor(aPerformance))
         const result = Object.assign({},aPerformance)
         result.play = calculator.play
         result.amount = calculator.amount
         result.volumeCredits = calculator.volumeCredits
         return result
+    }
+    function createPerformanceCalculator(aPerformance, aPlay) {
+        return new PerformanceCalculator(aPerformance, aPlay)
     }
     function playFor(aPerformance) {
         return plays[aPerformance.playID]
