@@ -4,7 +4,7 @@ function statement (invoices, plays) {
     let result = `Statement for ${invoices.customer}\n`
     const format = new Intl.NumberFormat("en-US", {style: 'currency', currency:"USD", minimumFractionDigits: 2}).format
     for(let perf of invoices.performances) {
-        const play = plays[perf.playID]
+        const play = playFor(perf)
         
         let thisAmount = amountFor(perf, play)
 
@@ -41,6 +41,9 @@ function statement (invoices, plays) {
                 throw new Error(`unknow type: ${play.type}`)
         }
         return result
+    }
+    function playFor(aPerformance) {
+        return plays[aPerformance.playID]
     }
 }
 
