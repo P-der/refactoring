@@ -1,0 +1,28 @@
+{
+  "name": "refactoring",
+  "version": "1.0.0",
+  "description": "重构-改善既有代码的设计-笔记代码",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/P-der/refactoring.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/P-der/refactoring/issues"
+  },
+  "homepage": "https://github.com/P-der/refactoring#readme",
+  "dependencies": {
+    "jest": "^29.0.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.19.1",
+    "@babel/preset-env": "^7.19.1",
+    "babel-jest": "^29.0.3"
+  }
+}
