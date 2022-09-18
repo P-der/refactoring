@@ -9,11 +9,8 @@ function statement (invoices, plays) {
         result += ` ${playFor(perf).name}: ${usd(amountFor(perf))} (${perf.audience} seats)\n`
         totalAmount += amountFor(perf)
     }
-
-    let volumeCredits = 0;
-    for(let perf of invoices.performances) {
-        volumeCredits += volumeCreditsFor(perf)
-    }
+    let volumeCredits = totalVolumeCredits()
+    
     result += `Amount owed is ${usd(totalAmount)}\n`
     result += `You earned ${volumeCredits} credits\n`
     return result
@@ -50,6 +47,13 @@ function statement (invoices, plays) {
     }
     function usd(aNumber) {
         return new Intl.NumberFormat("en-US", {style: 'currency', currency:"USD", minimumFractionDigits: 2}).format(aNumber/100)
+    }
+    function totalVolumeCredits() {
+        let result = 0;
+        for(let perf of invoices.performances) {
+            result += volumeCreditsFor(perf)
+        }
+        return result
     }
 }
 
