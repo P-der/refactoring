@@ -14,7 +14,14 @@ export default function createStatementData (invoices, plays) {
         return result
     }
     function createPerformanceCalculator(aPerformance, aPlay) {
-        return new PerformanceCalculator(aPerformance, aPlay)
+        switch(aPlay.type)  {
+            case "tragedy": 
+                return new TragedyCalcuator(aPerformance, aPlay)
+            case "comedy": 
+                return new ComedyCalcuator(aPerformance, aPlay)
+            default: 
+                throw new Error(`unknow type: ${aPlay.type}`)
+        }
     }
     function playFor(aPerformance) {
         return plays[aPerformance.playID]
@@ -60,3 +67,6 @@ class PerformanceCalculator {
         return result
     }
 }
+
+class TragedyCalcuator extends PerformanceCalculator {}
+class ComedyCalcuator extends PerformanceCalculator {}
