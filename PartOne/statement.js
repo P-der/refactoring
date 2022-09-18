@@ -37,7 +37,7 @@ function statement (invoices, plays) {
                 result += 300 * aPerformance.audience
                 break
             default: 
-                throw new Error(`unknow type: ${play.type}`)
+                throw new Error(`unknow type: ${playFor(aPerformance).type}`)
         }
         return result
     }
