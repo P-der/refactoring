@@ -1,4 +1,4 @@
-import { statement } from "../PartOne/statement.js"
+import { statement, htmlStatement } from "../PartOne/statement.js"
 const plays = {
     hamlet: {
         name: "Hamlet",
@@ -34,4 +34,8 @@ const invoices = [
 ]
 test('测试statement函数返回结果是否正确', () => {
     expect(statement(invoices[0], plays)).toMatchSnapshot()
+})
+
+test('测试htmlStatementt函数返回结果是否正确', () => {
+    expect(htmlStatement(invoices[0], plays)).toMatchSnapshot()
 })
