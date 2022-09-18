@@ -5,7 +5,11 @@ function statement (invoices, plays) {
     return renderPlainText(statementData, plays)
     function enrichPerformance(aPerformance) {
         const result = Object.assign({},aPerformance)
+        result.play = playFor(result)
         return result
+    }
+    function playFor(aPerformance) {
+        return plays[aPerformance.playID]
     }
 }
 function renderPlainText (data, plays) {
